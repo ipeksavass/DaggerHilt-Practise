@@ -1,9 +1,6 @@
 package com.ipeksavas.daggerhiltpractise.di
 
-import android.app.Application
 import com.ipeksavas.daggerhiltpractise.data.remote.MyApi
-import com.ipeksavas.daggerhiltpractise.data.repository.MyRepositoryImpl
-import com.ipeksavas.daggerhiltpractise.domain.repository.MyRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -39,6 +36,7 @@ object AppModule {
         // Bu sayede MyApi arayüzündeki tanımlı HTTP çağrılarını gerçekleştirebiliriz.
     }
     
+    /*  Yeni bir modul oluşturdum repositorymodule adında bind ile orada sağlıyorum nesneleri
     @Provides
     @Singleton
     fun provideMyRepository(
@@ -48,6 +46,7 @@ object AppModule {
     ): MyRepository{
         return MyRepositoryImpl(api,app)
     }
+     */
     
     @Provides
     @Singleton
