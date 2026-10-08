@@ -1,6 +1,9 @@
 package com.ipeksavas.daggerhiltpractise.di
 
+import android.app.Application
 import com.ipeksavas.daggerhiltpractise.data.remote.MyApi
+import com.ipeksavas.daggerhiltpractise.data.repository.MyRepositoryImpl
+import com.ipeksavas.daggerhiltpractise.domain.repository.MyRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -33,5 +36,11 @@ object AppModule {
         //MyApi arayüzünü somut bir nesneye dönüştürmek için Retrofit kullanıyoruz.
         // Retrofit, HTTP isteklerini yönetmek ve yanıtları almak için kullanılan bir kütüphanedir.
         // Bu sayede MyApi arayüzündeki tanımlı HTTP çağrılarını gerçekleştirebiliriz.
+    }
+    
+    @Provides
+    @Singleton
+    fun provideMyRepository(api: MyApi,app: Application): MyRepository{
+        return MyRepositoryImpl(api,app)
     }
 }
