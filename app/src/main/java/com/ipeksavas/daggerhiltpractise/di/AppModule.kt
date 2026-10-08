@@ -9,6 +9,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
+import javax.inject.Named
 import javax.inject.Singleton
 
 //app module'deki bağımlılıklarımızın ömrünü belirler. Tüm bu bağımlılıklar uygulama boyunca yaşayacaktır.
@@ -40,7 +41,21 @@ object AppModule {
     
     @Provides
     @Singleton
-    fun provideMyRepository(api: MyApi,app: Application): MyRepository{
+    fun provideMyRepository(
+        api: MyApi,
+        app: Application,
+        @Named("Hello1") hello1: String
+    ): MyRepository{
         return MyRepositoryImpl(api,app)
     }
+    
+    @Provides
+    @Singleton
+    @Named("Hello1")
+    fun provideString1() = "Hello1"
+    
+    @Provides
+    @Singleton
+    @Named("Hello2")
+    fun provideString2() = "Hello2"
 }
